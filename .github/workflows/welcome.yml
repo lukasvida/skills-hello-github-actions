@@ -19,6 +19,7 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           git status
+      - run: echo ${GITHUB_HEAD_REF#refs/heads/} | sed 's/issue\//exp\//g'
       - name: Extract branch name
         shell: bash
         run: git branch -a --list '`echo ${GITHUB_HEAD_REF#refs/heads/} | sed 's/issue\//exp\//g'`'
