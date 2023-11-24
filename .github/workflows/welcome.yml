@@ -2,7 +2,7 @@ name: Remove exp branch
 on:
   pull_request:
     branches:
-      - "issue/**"
+      - 'issue/**'
 
 permissions:
   pull-requests: write
