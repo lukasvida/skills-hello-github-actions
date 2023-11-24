@@ -1,13 +1,17 @@
 name: Remove exp branch
 on:
   pull_request:
+    types:
+      - closed
     branches:
       - "issue/**"
+
 permissions:
   pull-requests: write
 jobs:
-  build:
-    name: Check branches
+  get_name:
+    if: github.event.pull_request.merged == true
+    name: Delete exp branch
     runs-on: ubuntu-latest
     steps:
       - name: Git checkout
@@ -21,9 +25,7 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           git status
-      - name: branches
-        run: git branch -a
-      - name: Extract branch name
-        shell: bash
-        run: echo "${GITHUB_REF#refs/heads/})" >>  $GITHUB_OUTPUT
-        id: extract_branch
+      - id: extract_name
+        run: echo "BRANCH_NAME=`echo ${GITHUB_HEAD_REF#refs/heads/} | sed 's/issue\//remotes\/origin\/exp\//g'`" >> $GITHUB_OUTPUT
+      - name: remove branch
+        run: git branch -d "${{steps.extract_name.outputs.BRANCH_NAME}}"
