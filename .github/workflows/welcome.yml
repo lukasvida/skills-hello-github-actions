@@ -21,4 +21,7 @@ jobs:
           git status
       - name: branches
         run: git branch -a
-      - run: echo ${BRANCH_NAME}
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
