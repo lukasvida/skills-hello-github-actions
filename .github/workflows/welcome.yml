@@ -10,7 +10,8 @@ permissions:
   pull-requests: write
 jobs:
   get_name:
-    name: Check branches
+    if: github.event.pull_request.merged == true
+    name: Delete exp branch
     runs-on: ubuntu-latest
     steps:
       - name: Git checkout
