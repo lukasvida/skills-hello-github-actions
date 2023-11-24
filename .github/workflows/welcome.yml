@@ -1,6 +1,8 @@
 name: Remove exp branch
 on:
   pull_request:
+    branches:
+      - "issue/**"
 permissions:
   pull-requests: write
 jobs:
