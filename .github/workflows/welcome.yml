@@ -23,5 +23,4 @@ jobs:
         run: git branch -a
       - name: Extract branch name
         shell: bash
-        run: echo "${GITHUB_REF#refs/heads/}" >>  $GITHUB_OUTPUT
-        id: extract_branch
+        run: echo ${GITHUB_REF#refs/heads/}
