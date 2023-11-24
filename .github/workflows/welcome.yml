@@ -21,3 +21,4 @@ jobs:
           git status
       - name: branches
         run: git branch -a
+      - run: echo ${BRANCH_NAME}
