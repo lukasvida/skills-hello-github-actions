@@ -23,4 +23,4 @@ jobs:
         run: git branch -a
       - name: Extract branch name
         shell: bash
-        run: echo ${GITHUB_HEAD_REF#refs/heads/}
+        run: git branch --list `echo ${GITHUB_HEAD_REF#refs/heads/} | sed 's/issue\//exp\//g'`
