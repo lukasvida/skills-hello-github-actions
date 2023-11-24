@@ -1,8 +1,6 @@
 name: Remove exp branch
 on:
   pull_request:
-    types:
-      - closed
     branches:
       - "issue/**"
 
@@ -27,5 +25,5 @@ jobs:
           git status
       - id: extract_name
         run: echo "BRANCH_NAME=`echo ${GITHUB_HEAD_REF#refs/heads/} | sed 's/issue\//remotes\/origin\/exp\//g'`" >> $GITHUB_OUTPUT
-      - name: remove branch
-        run: git branch -d "${{steps.extract_name.outputs.BRANCH_NAME}}"
+      # - name: remove branch
+      #   run: git branch -d "${{steps.extract_name.outputs.BRANCH_NAME}}"
