@@ -22,7 +22,7 @@ jobs:
           git config user.email "<>"
           git status
       - id: extract_name
-        run: echo "test=`echo ${GITHUB_HEAD_REF#refs/heads/} | sed 's/issue\//exp\//g'`"" >> $GITHUB_OUTPUT
+        run: echo "test=`echo ${GITHUB_HEAD_REF#refs/heads/} | sed 's/issue\//exp\//g'`" >> $GITHUB_OUTPUT
 
   list-branch:
     runs-on: ubuntu-latest
