@@ -20,6 +20,7 @@ jobs:
           git config user.email "<>"
           git status
       - run: echo ${GITHUB_HEAD_REF#refs/heads/} | sed 's/issue\//exp\//g'
+      - run: git branch -a
       - name: Extract branch name
         shell: bash
-        run: git branch -a --list '`echo ${GITHUB_HEAD_REF#refs/heads/} | sed 's/issue\//exp\//g'`'
+        run: git branch -a --list `echo ${GITHUB_HEAD_REF#refs/heads/} | sed 's/issue\//exp\//g'`
