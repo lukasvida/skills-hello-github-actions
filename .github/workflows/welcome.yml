@@ -11,17 +11,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: "0"
-      - name: git
+      - name: Git user setup
         run: |
           # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
-          git --version
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
-          git status
-      - id: extract_name
+      - name: Extract branch name
+        id: extract_name
         run: echo "BRANCH_NAME=`echo ${GITHUB_HEAD_REF#refs/heads/} | sed 's/issue\//exp\//g'`" >> $GITHUB_OUTPUT
-      - name: remove branch
+      - name: Remove branch
         run: git push origin -d "${{steps.extract_name.outputs.BRANCH_NAME}}"
+
+        # skontrolovat z ktorej branche je PR spraveny
