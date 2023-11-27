@@ -7,7 +7,7 @@
   Add your open source license, GitHub uses MIT license.
 -->
 
-# Idem testovat potreti
+# Idem testovat postvrte
 
 _Create a GitHub Action and use it in a workflow._
 
