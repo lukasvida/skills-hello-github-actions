@@ -13,12 +13,12 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: "0"
+          #   fetch-depth: "0"
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Git user setup
         run: |
-          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
       - name: Extract branch name
         id: extract_name
         run: echo "BRANCH_NAME=`echo ${GITHUB_HEAD_REF#refs/heads/} | sed 's/issue\//exp\//g'`" >> $GITHUB_OUTPUT
