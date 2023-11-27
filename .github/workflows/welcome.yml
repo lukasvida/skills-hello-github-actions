@@ -3,7 +3,7 @@ on:
   pull_request:
     types: [closed]
 permissions:
-  pull-requests: write
+  contents: write
 jobs:
   get_name:
     if: github.event.pull_request.merged == true
